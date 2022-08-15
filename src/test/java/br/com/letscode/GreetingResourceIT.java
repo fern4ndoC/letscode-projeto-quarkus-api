@@ -1,8 +1,8 @@
 package br.com.letscode;
 
-import io.quarkus.test.junit.QuarkusIntegrationTest;
+import io.quarkus.test.junit.QuarkusTest;
 
-@QuarkusIntegrationTest
+@QuarkusTest
 public class GreetingResourceIT extends GreetingResourceTest {
     // Execute the same tests but in packaged mode.
 }
