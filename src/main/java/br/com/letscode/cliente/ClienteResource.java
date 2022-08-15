@@ -13,7 +13,6 @@ import java.util.List;
 @Path("/cliente")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@ApplicationScoped
 public class ClienteResource {
 
     @Inject
