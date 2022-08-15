@@ -6,6 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Executando como método MAIN.");
-        Quarkus.run();
+        Quarkus.run(args);
     }
 }

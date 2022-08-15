@@ -19,7 +19,6 @@ public class ClienteResource {
 
     @POST
     @Path("/create")
-    @Transactional
     public ClienteDTO create(@Valid ClienteDTO clienteDTO) {
         return clienteService.create(clienteDTO);
     }
