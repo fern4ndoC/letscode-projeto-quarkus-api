@@ -2,7 +2,6 @@ package br.com.letscode.cliente;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -16,39 +15,30 @@ import java.util.List;
 public class ClienteResource {
 
     @Inject
-    private ClienteMapper clienteMapper;
+    private ClienteService clienteService;
 
     @POST
+    @Path("/create")
     @Transactional
     public ClienteDTO create(@Valid ClienteDTO clienteDTO) {
-        Cliente cliente = clienteMapper.toEntity(clienteDTO);
-        cliente.persist();
-        return clienteMapper.toDomain(cliente);
+        return clienteService.create(clienteDTO);
     }
 
     @GET
-    public List<Cliente> list() {
-        return Cliente.listAll();
+    @Path("/list")
+    public List<ClienteDTO> list() {
+        return clienteService.listClients();
     }
 
     @PUT
     @Path(("/{id}"))
-    @Transactional
     public ClienteDTO update(@Valid @PathParam Long id, ClienteDTO clienteDTO) {
-        Cliente cliente = Cliente.findById(id);
-        cliente.name = clienteDTO.getName();
-        cliente.age = clienteDTO.getAge();
-        cliente.vatNumber = clienteDTO.getVatNumber();
-        cliente.email = clienteDTO.getEmail();
-        cliente.persist();
-        return clienteMapper.toDomain(cliente);
+        return clienteService.update(id, clienteDTO);
     }
 
     @DELETE
     @Path("/{id}")
-    @Transactional
     public void delete(@PathParam Long id){
-        Cliente cliente = Cliente.findById(id);
-        cliente.delete();
+        clienteService.delete(id);
     }
 }
