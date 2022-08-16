@@ -8,4 +8,8 @@ import javax.persistence.Entity;
 public class Categoria extends PanacheEntity {
     public String code;
     public String name;
+
+    public static Categoria findByCode(String code){
+        return (Categoria) find("code", code).firstResultOptional().orElseThrow();
+    }
 }

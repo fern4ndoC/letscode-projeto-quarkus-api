@@ -1,7 +1,5 @@
 package br.com.letscode.categoria;
 
-import br.com.letscode.cliente.Cliente;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -22,7 +20,7 @@ public class CategoriaService {
     }
 
     public List<CategoriaDTO> listClients() {
-        return Cliente.listAll().stream()
+        return Categoria.listAll().stream()
                 .map(categoria -> categoriaMapper.toDomain((Categoria) categoria))
                 .collect(Collectors.toList());
     }
@@ -39,5 +37,9 @@ public class CategoriaService {
     @Transactional
     public void delete(Long id) {
         Categoria.deleteById(id);
+    }
+
+    public CategoriaDTO findByCode(String code) {
+        return categoriaMapper.toDomain(Categoria.findByCode(code));
     }
 }

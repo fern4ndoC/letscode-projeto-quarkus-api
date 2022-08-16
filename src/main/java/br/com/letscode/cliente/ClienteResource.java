@@ -15,7 +15,7 @@ import java.util.List;
 public class ClienteResource {
 
     @Inject
-    private ClienteService clienteService;
+    ClienteService clienteService;
 
     @POST
     @Path("/create")

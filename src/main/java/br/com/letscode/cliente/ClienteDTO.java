@@ -1,14 +1,16 @@
 package br.com.letscode.cliente;
 
 import br.com.letscode.categoria.Categoria;
+import br.com.letscode.categoria.CategoriaDTO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class ClienteDTO {
     @NotNull
     @NotEmpty(message = "O nome é obrigatório.")
@@ -28,7 +30,6 @@ public class ClienteDTO {
     @NotEmpty(message = "O email é obrigatório.")
     private String email;
 
-    /*@NotNull
-    @NotEmpty
-    private Categoria categoria;*/
+    @NotNull
+    private CategoriaDTO categoria;
 }
